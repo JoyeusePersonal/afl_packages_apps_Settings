@@ -262,13 +262,13 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     preference.setLayoutResource(R.layout.preference_usercard);
                 }
 	            if (key.equals("top_level_about_device")) {
-	            preference.setLayoutResource(R.layout.afterlife_cardview_single_left);
+	            preference.setLayoutResource(R.layout.afterlab_cardview_single_left);
 	            }
                 if (key.equals("top_level_afterlab")){
-                    preference.setLayoutResource(R.layout.afterlife_cardview_single_right);
+                    preference.setLayoutResource(R.layout.afterlab_cardview_single_right);
                 }
                 if (key.equals("airplane_mode")){
-                    preference.setLayoutResource(R.layout.afterlife_cardview_top_switch);
+                    preference.setLayoutResource(R.layout.afterlab_cardview_top_switch);
                 }
                 if (key.equals("internet_settings")){
                     preference.setLayoutResource(R.layout.afterlife_cardview_middle);

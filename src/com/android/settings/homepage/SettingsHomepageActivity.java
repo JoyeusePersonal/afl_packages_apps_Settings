@@ -457,6 +457,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         enableTaskLocaleOverride();
     }
+}
 
     @VisibleForTesting
     void initSplitPairRules() {
