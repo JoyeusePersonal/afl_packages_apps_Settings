@@ -537,39 +537,41 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     }
 
     private void onUserCard() {
-        final LayoutPreference headerPreference =
-                (LayoutPreference) getPreferenceScreen().findPreference(KEY_USER_CARD);
-        final View userCard = headerPreference.findViewById(R.id.entity_header);
-        final TextView textview = headerPreference.findViewById(R.id.summary);
-        final Activity context = getActivity(); final Bundle bundle = getArguments();
-        final EntityHeaderController controller = EntityHeaderController
-                .newInstance(context, this, userCard)
-                .setRecyclerView(getListView(), getSettingsLifecycle())
-                .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
-                        EntityHeaderController.ActionType.ACTION_NONE);
+        if (declanXafterlifeStyle() == 0) {
+            final LayoutPreference headerPreference =
+                    (LayoutPreference) getPreferenceScreen().findPreference(KEY_USER_CARD);
+            final View userCard = headerPreference.findViewById(R.id.entity_header);
+            final TextView textview = headerPreference.findViewById(R.id.summary);
+            final Activity context = getActivity(); final Bundle bundle = getArguments();
+            final EntityHeaderController controller = EntityHeaderController
+                    .newInstance(context, this, userCard)
+                    .setRecyclerView(getListView(), getSettingsLifecycle())
+                    .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
+                            EntityHeaderController.ActionType.ACTION_NONE);
 
-         userCard.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                   Intent intent = new Intent(Intent.ACTION_MAIN);
-                   intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
-                   startActivity(intent);
+            userCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
+                    startActivity(intent);
 
-             }
-         });
+                }
+            });
 
-         final int iconId = bundle.getInt("icon_id", 0);
-         if (iconId == 0) {
-            final UserManager userManager = (UserManager) getActivity().getSystemService(
-		     Context.USER_SERVICE);
-	    final UserInfo info = Utils.getExistingUser(userManager,
-		     android.os.Process.myUserHandle());
-	    controller.setLabel(info.name);
-	    controller.setIcon(
-	             com.android.settingslib.Utils.getUserIcon(getActivity(), userManager, info));
-         }
+            final int iconId = bundle.getInt("icon_id", 0);
+            if (iconId == 0) {
+                final UserManager userManager = (UserManager) getActivity().getSystemService(
+                    Context.USER_SERVICE);
+                final UserInfo info = Utils.getExistingUser(userManager,
+                    android.os.Process.myUserHandle());
+                controller.setLabel(info.name);
+                controller.setIcon(
+                    com.android.settingslib.Utils.getUserIcon(getActivity(), userManager, info));
+            }
 
-	 controller.done(true /* rebindActions */);
+            controller.done(true /* rebindActions */);
+        }    
    }
 
     @Override

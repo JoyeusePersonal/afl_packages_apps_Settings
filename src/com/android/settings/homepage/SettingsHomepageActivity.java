@@ -990,12 +990,4 @@ public class SettingsHomepageActivity extends FragmentActivity implements
             }
         }
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (avatarView != null) {
-          avatarView.setImageDrawable(getCircularUserIcon(getApplicationContext()));
-        }
-    }
 }
